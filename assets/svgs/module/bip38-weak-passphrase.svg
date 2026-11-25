@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- padlock shackle -->
+  <path d="M182 210 V158 a74 74 0 0 1 148 0 V210" fill="none" stroke="#556080" stroke-width="28" stroke-linecap="round"/>
+  <!-- lock body -->
+  <rect x="140" y="206" width="232" height="200" rx="28" fill="#F0C419" stroke="#D09838" stroke-width="10"/>
+  <!-- BIP38 signature prefix -->
+  <text x="256" y="296" font-family="monospace" font-weight="800" font-size="64" fill="#7a4f08" text-anchor="middle">6P</text>
+  <!-- weak passphrase dots -->
+  <g fill="#7a4f08">
+    <circle cx="206" cy="352" r="16"/>
+    <circle cx="256" cy="352" r="16"/>
+    <circle cx="306" cy="352" r="16"/>
+  </g>
+  <!-- cracked badge -->
+  <circle cx="356" cy="150" r="40" fill="#FF5D5D" stroke="#FFFFFF" stroke-width="8"/>
+  <path d="M356 128 l-18 46 26 -8 -16 40" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

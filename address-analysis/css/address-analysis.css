@@ -1,0 +1,335 @@
+/* ============================================================================
+   Bitcoin Address Analysis — tool layer, embedded inside the CryptographyTube
+   site chrome (navbar + footer + Bootstrap theme).
+
+   Load order: bootstrap-purged.min.css → style.min.css → arf.css → panel.css
+   → THIS file (last, so these overrides win).
+
+   The d3 tree engine (arf.js / panel.css) uses its own `--color-*` token
+   namespace, which is distinct from the site's `--cgt-*` tokens. We remap the
+   engine tokens onto the site tokens so the tree follows the site's light/dark
+   theme automatically (the site flips `--cgt-*` via <html data-bs-theme>).
+   ========================================================================== */
+
+:root {
+  --aa-accent: #f7931a;                        /* bitcoin orange for CTAs */
+
+  /* Remap OSINT engine tokens -> CryptographyTube site theme */
+  --color-bg:               var(--cgt-bg);
+  --color-surface:          var(--cgt-bg-secondary);
+  --color-text-primary:     var(--cgt-text);
+  --color-text-secondary:   #6c757d;
+  --color-border:           var(--cgt-border);
+  --color-link:             var(--cgt-border);
+  --color-node-fill-leaf:   var(--cgt-bg-secondary);
+  --color-node-fill-branch: var(--cgt-primary);
+  --color-node-stroke:      var(--cgt-primary);
+  --color-accent:           var(--aa-accent);
+}
+[data-bs-theme="dark"] { --color-text-secondary: #9ca3af; }
+
+/* arf.css sets body{overflow:hidden;margin:0}. Undo that so the site page
+   scrolls normally and keeps the site background/layout. */
+body { overflow: auto !important; }
+
+/* ---- Address / TXID search bar ----
+   Markup reuses the site-wide `.search-bar` + `.balance-summary` components
+   (defined in style.min.css), so it matches the private-keys look automatically.
+   We only center the block and keep it from stretching too wide on desktop. */
+#aa-controls { max-width: 760px; margin-left: auto; margin-right: auto; }
+
+/* ---- Status line ---- */
+#aa-status {
+  text-align: center;
+  min-height: 20px;
+  margin-top: .5rem;
+  font-size: .875rem;
+  color: var(--cgt-text);
+  opacity: .8;
+}
+#aa-status.error   { color: #dc3545; opacity: 1; }
+#aa-status.loading { color: var(--aa-accent); opacity: 1; }
+
+/* ---- In-tree search / filter (revealed after first analysis) ---- */
+#search-container { max-width: 860px; margin: 0 auto .5rem; position: relative; }
+#search-input { font-size: .9rem; }
+/* Filter box (left) + match list (right), stacking on narrow screens. */
+.aa-tools-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-start; }
+.aa-filter-col { position: relative; flex: 1 1 320px; min-width: 240px; }
+.aa-watch-col { flex: 1 1 320px; min-width: 240px; }
+#aa-watchlist { font-family: var(--bs-font-monospace, ui-monospace, monospace); font-size: 12px; min-height: 62px; resize: vertical; }
+.aa-watch-hint { margin-top: 3px; font-size: 11px; opacity: .75; }
+.aa-hidden { display: none !important; }
+
+/* ---- Fullscreen toggle + stage ----
+   #aa-stage wraps the filter/match tools, the tree canvas and the detail panel
+   so they all sit INSIDE the element we send fullscreen — otherwise the panel
+   and match list (siblings) would vanish, since the browser only renders the
+   fullscreen element's own subtree. In normal flow #aa-stage is a transparent
+   block wrapper; the .aa-fs-active class (toggled by JS on fullscreenchange)
+   turns it into a full-viewport stage with the tools and panel as overlays. */
+/* Buttons live in a small tools cluster pinned to the graph's top-right corner. */
+#aa-graph-tools {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 6;
+  display: flex;
+  gap: 6px;
+}
+.aa-graph-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--cgt-text);
+  background: var(--cgt-bg);
+  border: 1px solid var(--cgt-border);
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+  cursor: pointer;
+  opacity: .9;
+}
+.aa-graph-btn:hover { opacity: 1; border-color: var(--aa-accent); }
+/* arf.css sets a bare `svg { width:100%; height:calc(100vh-120px) }` for the tree
+   canvas — pin the button icons so that rule can't blow them up to fill the chart. */
+.aa-graph-btn svg { display: block; width: 14px; height: 14px; flex: 0 0 auto; cursor: pointer; }
+
+#aa-stage.aa-fs-active {
+  position: fixed;
+  inset: 0;
+  background: var(--cgt-bg);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+#aa-stage.aa-fs-active #aa-graph-wrap {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+}
+#aa-stage.aa-fs-active #body {
+  height: 100%;
+  max-height: none;
+  min-height: 0;
+  border: none;
+  border-radius: 0;
+}
+/* Filter + match list float over the top of the graph (clear of the FS button). */
+#aa-stage.aa-fs-active #search-container {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 260px;
+  z-index: 6;
+  margin: 0;
+  max-width: 860px;
+  padding: 10px;
+  background: var(--cgt-bg);
+  border: 1px solid var(--cgt-border);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+}
+/* Detail panel slides in from the right as an overlay while fullscreen. */
+#aa-stage.aa-fs-active #tool-panel {
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: auto !important;
+  width: min(440px, 94vw) !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  border-left: 1px solid var(--cgt-border) !important;
+  overflow: auto !important;
+  z-index: 8;
+  box-shadow: -6px 0 18px rgba(0, 0, 0, .35) !important;
+}
+
+/* ---- Tree canvas: bounded card inside the page (not full viewport) ---- */
+#aa-graph-wrap {
+  position: relative;
+  margin-top: .5rem;
+}
+#body {
+  position: relative;
+  width: 100%;
+  height: min(72vh, 780px);
+  min-height: 400px;
+  margin: 0;
+  background: var(--cgt-bg-secondary);
+  border: 1px solid var(--cgt-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+/* Engine sets svg{height:calc(100vh-120px)}; here it fills the card. */
+#body svg {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+/* Full, monospace labels so complete addresses/TXIDs stay legible in the tree. */
+#body .node text {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 12px;
+}
+
+/* ---- Pinned flow box ----
+   A compact yellow box pinned to the top of the graph. It shows the selected
+   node's full address/TXID and the root→…→node path, so clicking a node never
+   requires scrolling down to the detail card. pointer-events:none lets clicks
+   pass THROUGH to the nodes behind it; only the copy button opts back in. */
+#aa-flowbox {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  z-index: 5;
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 8px 12px;
+  background: #fff3cd;
+  color: #4d3800;
+  border: 1px solid var(--aa-accent);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .18);
+  pointer-events: none;
+}
+[data-bs-theme="dark"] #aa-flowbox {
+  background: #3a2e05;
+  color: #ffe08a;
+}
+.aa-flow-kind { font-size: 12px; font-weight: 700; margin-bottom: 2px; }
+.aa-flow-amt { font-weight: 400; opacity: .85; }
+.aa-flow-id { font-size: 12px; word-break: break-all; line-height: 1.4; }
+.aa-flow-path { margin-top: 3px; font-size: 11px; opacity: .85; word-break: break-all; }
+#aa-flowbox .aa-copy {
+  pointer-events: auto;               /* stays clickable inside the click-through box */
+  color: inherit;
+  border-color: currentColor;
+  opacity: .85;
+}
+
+/* Placeholder shown over the empty canvas before the first analysis */
+#aa-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  pointer-events: none;
+}
+.aa-placeholder-inner { max-width: 560px; text-align: center; color: #6c757d; }
+.aa-placeholder-title { font-size: 1.15rem; font-weight: 700; color: var(--cgt-text); margin-bottom: .5rem; }
+.aa-placeholder-text { line-height: 1.6; }
+
+/* ---- Detail box: an IN-PAGE card below the tree (not a slide-in panel) ----
+   panel.css makes #tool-panel a fixed, off-screen slide-in. We override it here
+   (loaded last) so it sits in the normal page flow, hidden until a node is
+   clicked (openPanel adds .open). The overlay is not used on this page. */
+#panel-overlay { display: none !important; }
+#tool-panel {
+  position: static !important;
+  transform: none !important;
+  inset: auto !important;
+  top: auto !important; right: auto !important; bottom: auto !important; left: auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  box-shadow: none !important;
+  transition: none !important;
+  overflow: visible !important;
+  display: none;
+  margin-top: 1rem;
+  background: var(--cgt-bg-secondary);
+  color: var(--cgt-text);
+  border: 1px solid var(--cgt-border);
+  border-radius: 12px;
+  z-index: auto !important;
+}
+#tool-panel.open { display: block; }
+/* Header/body render inline; keep them static (panel.css may make them sticky). */
+#panel-header { position: static !important; }
+#panel-body { overflow: visible !important; height: auto !important; max-height: none !important; }
+#panel-open-tool { background: var(--aa-accent); }
+
+/* ---- Chain selector: every coin is analysable. The selected-chain accent (a
+        clean 2px border in the chain's colour) and the hover tint both come from
+        the global .chain-tab styling in style.min.css — we ONLY set the row spacing
+        here, so the active-tab border matches the Public Key Toolkit / TXID→R,S,Z
+        tools exactly (no extra inset ring / weight / dimming that looked thicker). ---- */
+#aa-chain-tabs { margin-bottom: 1rem; }
+
+/* ---- Detail panel: blockchain field rows ---- */
+#panel-details-section { display: flex; flex-direction: column; gap: .5rem; }
+#panel-details-section.empty { display: none; }
+#panel-details { display: flex; flex-direction: column; gap: .75rem; }
+
+.aa-row { display: flex; flex-direction: column; gap: 2px; }
+.aa-row-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.aa-row-value { font-size: 14px; color: var(--cgt-text); line-height: 1.45; }
+.aa-row-value a { color: var(--cgt-primary); text-decoration: none; }
+.aa-row-value a:hover { text-decoration: underline; }
+.aa-mono {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 12px;
+  word-break: break-all;
+}
+.aa-muted { color: #6c757d; font-style: italic; }
+
+/* Copy-to-clipboard button */
+.aa-copy {
+  margin-left: 6px;
+  font-size: 10px;
+  padding: 0 5px;
+  border: 1px solid var(--cgt-border);
+  border-radius: 3px;
+  background: none;
+  color: #6c757d;
+  cursor: pointer;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.aa-copy:hover { color: var(--cgt-text); border-color: #6c757d; }
+
+/* ---- Panel pills for node types ---- */
+.badge-address   { background: #1e90cc; }
+.badge-root      { background: var(--aa-accent); }
+.badge-received  { background: #2d9e2d; }
+.badge-sent      { background: #c84040; }
+.badge-self      { background: #606060; }
+.badge-confirmed { background: #2d9e2d; }
+.badge-pending   { background: #b87800; }
+
+@media (max-width: 768px) {
+  #body { height: 62vh; }
+}
+
+/* Balance-check spinner — the rotating wheel shown in the Balance / Received / TX
+   boxes (and reused during any lookup) while an explorer request is in flight,
+   matching the Public Key Toolkit / TXID→R,S,Z tools. Self-contained: own keyframes
+   + explicit tint so the global .fa-icon filters never recolour it. */
+.aa-spin {
+  display: inline-block;
+  vertical-align: -2px;
+  animation: aa-spin .8s linear infinite;
+  filter: invert(48%);                 /* black source SVG -> muted grey */
+}
+[data-bs-theme="dark"] .aa-spin { filter: invert(78%); }
+@keyframes aa-spin { to { transform: rotate(360deg); } }
+
+/* Funded balance amounts use the private-keys balance green (#22c55e). */
+.stat-value.has-balance { color: #22c55e !important; font-weight: 700; }

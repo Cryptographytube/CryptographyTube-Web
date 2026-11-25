@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g transform="translate(-7.39 -28.01) scale(1.0309)">
+<!-- puzzle piece (interlocking square tabs) -->
+<rect x="150" y="78" width="212" height="188" rx="24" fill="#D0E8FF" stroke="#1C71DA" stroke-width="9"/>
+<rect x="214" y="52" width="84" height="36" rx="12" fill="#1C71DA"/>
+<rect x="214" y="238" width="84" height="30" rx="12" fill="#1C71DA"/>
+<!-- puzzle number badge -->
+<g transform="translate(256 172)">
+  <rect x="-62" y="-40" width="124" height="80" rx="18" fill="#FFFFFF" stroke="#1C71DA" stroke-width="7"/>
+  <text x="0" y="6" font-family="Arial, sans-serif" font-weight="800" font-size="44" fill="#1C71DA" text-anchor="middle">2<text font-size="26">n</text></text>
+</g>
+<!-- key range bar: 0 → max -->
+<rect x="96" y="330" width="320" height="18" rx="9" fill="#556080" opacity=".4"/>
+<rect x="96" y="330" width="150" height="18" rx="9" fill="#D09838"/>
+<rect x="246" y="320" width="20" height="38" rx="5" fill="#FF5D5D"/>
+<g font-family="monospace" font-weight="700" font-size="26" fill="#556080">
+  <text x="96" y="390">0</text>
+  <text x="374" y="390">2&#8319;</text>
+</g>
+<!-- the gold key hiding in the range -->
+<g transform="translate(256 440)">
+  <rect x="-22" y="-14" width="44" height="34" rx="9" fill="#F0C419"/>
+  <rect x="-8" y="-6" width="16" height="16" rx="4" fill="#363E51"/>
+  <rect x="-6" y="20" width="12" height="30" rx="3" fill="#F0C419"/>
+  <rect x="6" y="40" width="22" height="9" rx="3" fill="#D09838"/>
+  <rect x="6" y="53" width="15" height="7" rx="3" fill="#D09838"/>
+</g>
+</g></svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- branch connectors: one seed derives every key -->
+  <g stroke="#556080" stroke-width="9" fill="none" stroke-linecap="round">
+    <path d="M256 170 V210"/>
+    <path d="M110 210 H402"/>
+    <path d="M110 210 V262 M256 210 V262 M402 210 V262"/>
+  </g>
+  <!-- master seed node -->
+  <rect x="158" y="74" width="196" height="96" rx="20" fill="#16A085" stroke="#0b8a7c" stroke-width="9"/>
+  <text x="256" y="138" font-family="monospace" font-weight="800" font-size="46" fill="#FFFFFF" text-anchor="middle">SEED</text>
+  <!-- three derived keys -->
+  <g transform="translate(110 262)">
+    <circle cx="0" cy="30" r="30" fill="#F0C419" stroke="#D09838" stroke-width="6"/>
+    <circle cx="0" cy="30" r="11" fill="#0b8a7c"/>
+    <rect x="-8" y="56" width="16" height="66" rx="7" fill="#F0C419" stroke="#D09838" stroke-width="4"/>
+    <rect x="8" y="88" width="26" height="12" rx="4" fill="#D09838"/>
+    <rect x="8" y="106" width="18" height="12" rx="4" fill="#D09838"/>
+  </g>
+  <g transform="translate(256 262)">
+    <circle cx="0" cy="30" r="30" fill="#F0C419" stroke="#D09838" stroke-width="6"/>
+    <circle cx="0" cy="30" r="11" fill="#0b8a7c"/>
+    <rect x="-8" y="56" width="16" height="66" rx="7" fill="#F0C419" stroke="#D09838" stroke-width="4"/>
+    <rect x="8" y="88" width="26" height="12" rx="4" fill="#D09838"/>
+    <rect x="8" y="106" width="18" height="12" rx="4" fill="#D09838"/>
+  </g>
+  <g transform="translate(402 262)">
+    <circle cx="0" cy="30" r="30" fill="#F0C419" stroke="#D09838" stroke-width="6"/>
+    <circle cx="0" cy="30" r="11" fill="#0b8a7c"/>
+    <rect x="-8" y="56" width="16" height="66" rx="7" fill="#F0C419" stroke="#D09838" stroke-width="4"/>
+    <rect x="8" y="88" width="26" height="12" rx="4" fill="#D09838"/>
+    <rect x="8" y="106" width="18" height="12" rx="4" fill="#D09838"/>
+  </g>
+</svg>

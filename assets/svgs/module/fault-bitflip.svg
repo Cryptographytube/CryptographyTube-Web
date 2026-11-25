@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g transform="translate(0.61 -0.39) scale(0.9996)"><g transform="translate(-79.95 -47.77) scale(1.2872)">
+<g fill="#D09838">
+  <rect x="176" y="96" width="22" height="34" rx="5"/>
+  <rect x="246" y="96" width="22" height="34" rx="5"/>
+  <rect x="316" y="96" width="22" height="34" rx="5"/>
+  <rect x="176" y="382" width="22" height="34" rx="5"/>
+  <rect x="246" y="382" width="22" height="34" rx="5"/>
+  <rect x="316" y="382" width="22" height="34" rx="5"/>
+  <rect x="132" y="176" width="34" height="22" rx="5"/>
+  <rect x="132" y="246" width="34" height="22" rx="5"/>
+  <rect x="132" y="316" width="34" height="22" rx="5"/>
+  <rect x="346" y="176" width="34" height="22" rx="5"/>
+  <rect x="346" y="246" width="34" height="22" rx="5"/>
+  <rect x="346" y="316" width="34" height="22" rx="5"/>
+</g>
+<rect x="152" y="130" width="208" height="252" rx="22" fill="#363E51" stroke="#556080" stroke-width="6"/>
+<g font-family="monospace" font-weight="800" font-size="64" fill="#D0E8FF" opacity=".9">
+  <text x="176" y="262">0</text>
+  <text x="316" y="262">0</text>
+</g>
+<text x="246" y="262" font-family="monospace" font-weight="800" font-size="64" fill="#F0C419">1</text>
+<path d="M328 60 l-42 90 h38 l-26 78 90 -112 h-42 z" fill="#F8B242" stroke="#D09838" stroke-width="5" stroke-linejoin="round"/>
+<path d="M256 158 l-22 48 h24 l-18 46" fill="none" stroke="#FF5D5D" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+</g></g></svg>

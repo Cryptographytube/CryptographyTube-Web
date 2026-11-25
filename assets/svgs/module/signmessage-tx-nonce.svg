@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- signed message document -->
+  <rect x="96" y="58" width="320" height="198" rx="20" fill="#D0E8FF" stroke="#1C71DA" stroke-width="8"/>
+  <g stroke="#556080" stroke-width="11" stroke-linecap="round" opacity=".8">
+    <path d="M132 108 h210"/>
+    <path d="M132 148 h248"/>
+    <path d="M132 188 h150"/>
+  </g>
+  <!-- signature scribble -->
+  <path d="M150 232 q26 -30 48 -4 q12 14 30 0 q16 -12 40 4" fill="none" stroke="#1C71DA" stroke-width="9" stroke-linecap="round"/>
+  <!-- reused-nonce equation (same r) -->
+  <rect x="116" y="296" width="280" height="66" rx="16" fill="#FFFFFF" stroke="#FF5D5D" stroke-width="7"/>
+  <text x="256" y="340" font-family="monospace" font-weight="800" font-size="40" fill="#d83636" text-anchor="middle">r&#8321; = r&#8322;</text>
+  <!-- recovered private key -->
+  <g transform="translate(256 380)">
+    <circle cx="0" cy="0" r="25" fill="#F0C419" stroke="#D09838" stroke-width="6"/>
+    <circle cx="0" cy="0" r="9" fill="#363E51"/>
+    <rect x="-7" y="22" width="14" height="58" rx="6" fill="#F0C419" stroke="#D09838" stroke-width="4"/>
+    <rect x="7" y="52" width="24" height="11" rx="4" fill="#D09838"/>
+    <rect x="7" y="70" width="16" height="11" rx="4" fill="#D09838"/>
+  </g>
+</svg>

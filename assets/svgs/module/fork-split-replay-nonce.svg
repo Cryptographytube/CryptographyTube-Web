@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- fork: one key splits across two chains -->
+  <path d="M256 296 V198 M256 198 L150 110 M256 198 L362 110" fill="none" stroke="#556080" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- BTC coin (legacy sighash) -->
+  <circle cx="150" cy="94" r="62" fill="#f7931a" stroke="#c96f08" stroke-width="8"/>
+  <!-- drawn Bitcoin symbol (font-independent) -->
+  <text x="150" y="118" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="66" fill="#FFFFFF" text-anchor="middle">B</text>
+  <g fill="#FFFFFF">
+    <rect x="139" y="61" width="6" height="66" rx="2"/>
+    <rect x="152" y="61" width="6" height="66" rx="2"/>
+  </g>
+  <!-- BCH coin (BIP143 + FORKID) -->
+  <circle cx="362" cy="94" r="62" fill="#0ac18e" stroke="#08916b" stroke-width="8"/>
+  <text x="362" y="108" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="36" fill="#FFFFFF" text-anchor="middle">BCH</text>
+  <!-- reused nonce across the fork -->
+  <rect x="150" y="296" width="212" height="60" rx="14" fill="#FFFFFF" stroke="#FF5D5D" stroke-width="6"/>
+  <text x="256" y="337" font-family="monospace" font-weight="800" font-size="34" fill="#d83636" text-anchor="middle">same r</text>
+  <!-- recovered private key -->
+  <g transform="translate(256 388)">
+    <circle cx="0" cy="0" r="25" fill="#F0C419" stroke="#D09838" stroke-width="6"/>
+    <circle cx="0" cy="0" r="9" fill="#363E51"/>
+    <rect x="-7" y="22" width="14" height="58" rx="6" fill="#F0C419" stroke="#D09838" stroke-width="4"/>
+    <rect x="7" y="52" width="24" height="11" rx="4" fill="#D09838"/>
+    <rect x="7" y="70" width="16" height="11" rx="4" fill="#D09838"/>
+  </g>
+</svg>

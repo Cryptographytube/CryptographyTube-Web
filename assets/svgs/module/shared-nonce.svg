@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g transform="translate(-133.85 -166.65) scale(1.5258)">
+<g transform="translate(168 170)">
+  <rect x="-52" y="-40" width="104" height="80" rx="16" fill="#D0E8FF" stroke="#0096E6" stroke-width="8"/>
+  <text x="0" y="14" font-family="Arial, sans-serif" font-weight="800" font-size="40" fill="#0096E6" text-anchor="middle">BTC</text>
+</g>
+<g transform="translate(344 170)">
+  <rect x="-52" y="-40" width="104" height="80" rx="16" fill="#D0F0E8" stroke="#16A085" stroke-width="8"/>
+  <text x="0" y="14" font-family="Arial, sans-serif" font-weight="800" font-size="40" fill="#16A085" text-anchor="middle">ETH</text>
+</g>
+<rect x="256" y="158" width="0" height="0"/>
+<g transform="translate(256 250)">
+  <rect x="-40" y="-40" width="80" height="80" rx="16" fill="#F0C419" stroke="#D09838" stroke-width="7"/>
+  <text x="0" y="20" font-family="monospace" font-weight="800" font-size="44" fill="#363E51" text-anchor="middle">k</text>
+</g>
+<path d="M168 250 l-30 20 30 20 z" fill="#0096E6"/>
+<path d="M344 250 l30 20 -30 20 z" fill="#16A085"/>
+<path d="M256 342 l-20 18 20 20 20 -20 z" fill="#D09838"/>
+<g transform="translate(256 390)">
+  <rect x="-20" y="-13" width="40" height="30" rx="9" fill="#F0C419"/>
+  <rect x="-7" y="-5" width="14" height="14" rx="4" fill="#363E51"/>
+  <rect x="-5" y="17" width="10" height="22" rx="3" fill="#F0C419"/>
+  <rect x="5" y="31" width="20" height="7" rx="3" fill="#D09838"/>
+</g>
+</g></svg>

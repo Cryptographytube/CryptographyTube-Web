@@ -1,0 +1,64 @@
+======================================================================
+VULNSCAN — Bitcoin ECDSA Vulnerability Report
+======================================================================
+Address        : 1EDLS29FrUDBDUoX96vD3iihXWje6nmj8d
+Balance        : 0 BTC
+Total received : 94.49473386 BTC
+TX count       : 145
+Generated (UTC): 2026-09-07 05:37:00
+
+VULNERABILITY  : weak_nonce
+TITLE          : Weak/low nonce in 8 input(s) (k is only 1 bits)
+
+Transactions involved:
+  - 02ca3bce271dbfcf5a83520e162cfda36f55e85d3f7eaedfdd74e99ba57c47d4
+  - 5c83ca3cb7a47203ae5c2e60fd50ffc0c114d2ddb058ad5ce09e59b27b55c281
+  - 60afde14e61467f2b066431addfc2078507ab4180ab656d0e882b1b637d2693b
+  - f14b137a80cebfaa6941239c3fc4f38e15e40e9b798c08f04bd88725f77c4f02
+  - 1bf6f87ccc1dfd12857fbbf8d6d16fc2fd5883d42383e5e00777396fc287d9c8
+  - a425e08c67744ae47b3fb92bccfb63e71b947a0c610705b59915c25f060eb257
+  - aad202a4d1feae4813f91582c24d18820d9a25d389c9fe4e59aae67eccd00857
+  - 845befcb29d8cbcd916c1543e32e2e9b37a33f3be88d75e683455da435f7e926
+
+Signature indices: [0, 1, 2, 3, 4, 5, 6, 7]
+
+----------------------------------------------------------------------
+VALUES
+----------------------------------------------------------------------
+             count : 8
+          min_bits : 1
+          max_bits : 1
+     input_indices : [0, 1, 2, 3, 4, 5, 6, 7]
+
+----------------------------------------------------------------------
+CALCULATION (step by step)
+----------------------------------------------------------------------
+ 1. With the recovered key, k = (z + r·x)/s per signature.
+ 2. 8 signature(s) used a nonce of only 1 bits —
+ 3. far below the ~256-bit safe range.
+ 4. Sample nonces:
+ 5.     #0: k=0x1 (1 bits)
+ 6.     #1: k=0x1 (1 bits)
+ 7.     #2: k=0x1 (1 bits)
+ 8.     #3: k=0x1 (1 bits)
+ 9.     #4: k=0x1 (1 bits)
+10.     #5: k=0x1 (1 bits)
+
+======================================================================
+RECOVERED PRIVATE KEY
+======================================================================
+Private key (hex)      : 940a77b70c037bf4d5a55e32606470d60b02e24ca7f8f4fed88a4827a80e4770
+WIF (compressed)       : L2BUy9aiwrYEan84HEL9Zd9iK2QPgh7zmDXt38DHa6fR55R7x4sE
+WIF (uncompressed)     : 5JwV623CmbnbLtTXCP3ymYkfMrFpHF5Jcr4NXqm234Yp9F3sELu
+Public key (compressed): 0251a3420882e37e1468369de052c9295cff61f6bc36da74051ca148a2c085e2a3
+P2PKH (compressed)     : 19XKakgEQM2gKZ36MT56R7uLcF7Un2fHN9
+P2PKH (uncompressed)   : 1AbTFqx9g7DFENM2qu3xSdKiVczscQWdxq
+P2WPKH (bech32)        : bc1qt4707839c0dh36ws2yeehwxtr3sfu65t7zsl35
+P2SH-P2WPKH (3...)     : 3CwMGy5LDyZuULESyuGrwzHJmNZAjDfayS
+Matches scanned address: no (different script type)
+
+======================================================================
+Educational / security-audit use only. Only scan addresses you own
+or are authorized to analyze.
+A dangerously small nonce was used when signing.
+======================================================================

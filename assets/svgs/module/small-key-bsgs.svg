@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g transform="translate(0 8)">
+<!-- baby-step lattice of small dots -->
+<g fill="#1ABC9C">
+  <circle cx="96"  cy="120" r="12"/><circle cx="148" cy="120" r="12"/><circle cx="200" cy="120" r="12"/>
+  <circle cx="96"  cy="172" r="12"/><circle cx="148" cy="172" r="12"/><circle cx="200" cy="172" r="12"/>
+  <circle cx="96"  cy="224" r="12"/><circle cx="148" cy="224" r="12"/><circle cx="200" cy="224" r="12"/>
+</g>
+<!-- highlighted matched baby step -->
+<circle cx="200" cy="172" r="20" fill="none" stroke="#0F766E" stroke-width="7"/>
+<!-- giant-step arrow leaping across -->
+<path d="M232 172 C300 90 360 250 420 172" fill="none" stroke="#F0C419" stroke-width="12" stroke-linecap="round"/>
+<path d="M420 172 l-6 -26 26 12 z" fill="#F0C419"/>
+<text x="300" y="96" font-family="Arial, sans-serif" font-weight="800" font-size="30" fill="#B7950B" text-anchor="middle">m&#183;G</text>
+<!-- small key found (bottom) -->
+<g transform="translate(256 360)">
+  <circle cx="-44" cy="0" r="34" fill="none" stroke="#556080" stroke-width="12"/>
+  <rect x="-20" y="-10" width="120" height="20" rx="6" fill="#556080"/>
+  <rect x="70"  y="10" width="16" height="26" rx="4" fill="#556080"/>
+  <rect x="40"  y="10" width="16" height="20" rx="4" fill="#556080"/>
+</g>
+<text x="256" y="446" font-family="monospace" font-weight="800" font-size="34" fill="#0F766E" text-anchor="middle">d &lt; 2&#8319;</text>
+</g></svg>

@@ -1,0 +1,61 @@
+======================================================================
+VULNSCAN — Bitcoin ECDSA Vulnerability Report
+======================================================================
+Address        : 1EDLS29FrUDBDUoX96vD3iihXWje6nmj8d
+Balance        : 0 BTC
+Total received : 94.49473386 BTC
+TX count       : 145
+Generated (UTC): 2026-09-07 05:36:59
+
+VULNERABILITY  : shared_nonce_cross_key
+TITLE          : Shared-nonce key recovered (identical) — one nonce reused across 28 keys/chains
+
+Transactions involved:
+  - 1dd4fa445d40a752b8282d75781b66802266948606c76128b59f8377b018e46c
+  - 1dd4fa445d40a752b8282d75781b66802266948606c76128b59f8377b018e46c
+  - 1dd4fa445d40a752b8282d75781b66802266948606c76128b59f8377b018e46c
+
+Signature indices: [161, 162, 163]
+
+----------------------------------------------------------------------
+VALUES
+----------------------------------------------------------------------
+                 r : 79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798
+ recovered_nonce_k : 0000000000000000000000000000000000000000000000000000000000000001
+         collision : identical
+            pubkey : 02b530aace1774ac4a19de6619d9ba25e78e7fd09f7d0e8582e21e65f98aebf126
+    shared_by_keys : 28
+    source_address : 1AJh4ADaYTNvMJidWz5aUetqnmdeiNSySE
+
+----------------------------------------------------------------------
+CALCULATION (step by step)
+----------------------------------------------------------------------
+ 1. Two signatures share the SAME nonce R (identical x-coordinate).
+ 2. Collision type: identical nonce  — also the fingerprint of an RFC6979 HMAC-DRBG collision.
+ 3. PIN k from a same-key collision, verified by x(k·G) mod n == r:
+ 4.     k = (z_i - z_j)/(s_i - s_j)     (mod n)
+ 5.     k = 0x000000000000000000000000000000000000000000000000…
+ 6. Then recover each key that signed under this R:
+ 7.     x = (s·k - z)/r      (mod n)
+ 8.     x = 0x251d0c37a5f2f91246f09023c9077d3a2a67202da6547c9c…
+ 9. VERIFIED: x·G matches this input's on-chain public key.
+10. This nonce was shared by 28 distinct keys — each is recovered independently (cross-wallet leak).
+
+======================================================================
+RECOVERED PRIVATE KEY
+======================================================================
+Private key (hex)      : 251d0c37a5f2f91246f09023c9077d3a2a67202da6547c9c054ec1f3a38e7e4f
+WIF (compressed)       : KxTrXAqicQUBHEfQ69CoqFM7jeC9dWJiynPeto41xWsCZjxNqbJV
+WIF (uncompressed)     : 5J6dbUc45rGg2sDn79f26VdH2WGffBGLw6keawPS93gvNWXhPm5
+Public key (compressed): 02b530aace1774ac4a19de6619d9ba25e78e7fd09f7d0e8582e21e65f98aebf126
+P2PKH (compressed)     : 1AJh4ADaYTNvMJidWz5aUetqnmdeiNSySE
+P2PKH (uncompressed)   : 14iTG9Ci6beLvwXjXRmHonxtfHuCvKZqqp
+P2WPKH (bech32)        : bc1qvcg68gwyhuaut5nzhngr8fw3d0kdt7agl9awj7
+P2SH-P2WPKH (3...)     : 31oh6shUCmT3pepi1GRxV3a6uNSTxDTwzh
+Matches scanned address: no (different script type)
+
+======================================================================
+Educational / security-audit use only. Only scan addresses you own
+or are authorized to analyze.
+One nonce reused across different keys/chains — every key that shared it fell.
+======================================================================

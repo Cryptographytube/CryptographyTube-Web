@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g transform="translate(-70.13 -117.36) scale(1.2765)">
+<rect x="120" y="116" width="272" height="140" rx="22" fill="#363E51" stroke="#556080" stroke-width="7"/>
+<rect x="146" y="142" width="220" height="64" rx="12" fill="#556080" opacity=".55"/>
+<g font-family="monospace" font-weight="800" font-size="40" fill="#F0C419">
+  <text x="162" y="192">0</text>
+  <text x="222" y="192">0</text>
+  <text x="282" y="192">1</text>
+</g>
+<g font-family="monospace" font-weight="800" font-size="40" fill="#FFFFFF" opacity=".55">
+  <text x="330" y="192">&#8230;</text>
+</g>
+<rect x="146" y="216" width="220" height="18" rx="9" fill="#D09838"/>
+<path d="M256 300 l-20 18 20 20 20 -20 z" fill="#556080"/>
+<g transform="translate(256 330)">
+  <rect x="-34" y="-14" width="68" height="40" rx="10" fill="#E56565"/>
+  <text x="0" y="14" font-family="monospace" font-weight="800" font-size="30" fill="#FFFFFF" text-anchor="middle">LEAK</text>
+</g>
+<path d="M256 400 l-18 16 18 18 18 -18 z" fill="#D09838"/>
+<g transform="translate(256 440)">
+  <rect x="-20" y="-12" width="40" height="28" rx="9" fill="#F0C419"/>
+  <rect x="-7" y="-4" width="14" height="14" rx="4" fill="#363E51"/>
+  <rect x="-5" y="16" width="10" height="18" rx="3" fill="#F0C419"/>
+  <rect x="5" y="27" width="20" height="7" rx="3" fill="#D09838"/>
+</g>
+</g></svg>

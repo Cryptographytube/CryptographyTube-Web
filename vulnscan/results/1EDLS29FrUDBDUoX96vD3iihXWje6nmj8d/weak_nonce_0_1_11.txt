@@ -1,0 +1,54 @@
+======================================================================
+VULNSCAN — Bitcoin ECDSA Vulnerability Report
+======================================================================
+Address        : 1EDLS29FrUDBDUoX96vD3iihXWje6nmj8d
+Balance        : 0 BTC
+Total received : 94.49473386 BTC
+TX count       : 145
+Generated (UTC): 2026-09-07 05:37:00
+
+VULNERABILITY  : weak_nonce
+TITLE          : Weak/low nonce in 2 input(s) (k is only 1 bits)
+
+Transactions involved:
+  - ac2dbaf970d3fe02a5b010f07c3b8a6ce20a3f7ef624338502c59a003cb1c589
+  - a91a251217db9b77a8b0c8d85fc614a7e3ef55cf9ab3a45062a5c53834525625
+
+Signature indices: [0, 1]
+
+----------------------------------------------------------------------
+VALUES
+----------------------------------------------------------------------
+             count : 2
+          min_bits : 1
+          max_bits : 1
+     input_indices : [0, 1]
+
+----------------------------------------------------------------------
+CALCULATION (step by step)
+----------------------------------------------------------------------
+ 1. With the recovered key, k = (z + r·x)/s per signature.
+ 2. 2 signature(s) used a nonce of only 1 bits —
+ 3. far below the ~256-bit safe range.
+ 4. Sample nonces:
+ 5.     #0: k=0x1 (1 bits)
+ 6.     #1: k=0x1 (1 bits)
+
+======================================================================
+RECOVERED PRIVATE KEY
+======================================================================
+Private key (hex)      : d1da06db18abdd7271e69aafb358e0d9c4ef320747da687e9bd1e793244a186a
+WIF (compressed)       : L4FdnjGkwoiDRtCbEYBpgQkBL8xWbqYa2MUrXZKDZsCLte3zdei3
+WIF (uncompressed)     : 5KQhxg2kwZLJmcARXFmbNATYo2MHDsseqnsiaf8kdSsbsFrjKze
+Public key (compressed): 03b7cdaa562917a73ac7a2c6a59f8441eb68c020a972953e782d5a7efc91020fb9
+P2PKH (compressed)     : 16vFXxQwpYg4RzYpTiJmtwbpFe7UNdtT9e
+P2PKH (uncompressed)   : 1Fm5h5U7rV7G7P5HrMYX8jZrewQstP8Y2w
+P2WPKH (bech32)        : bc1qgr4vax238v67qafgt8vgjm67s28aac3faa4s0r
+P2SH-P2WPKH (3...)     : 3FFPYdsm5NXGQem5Z8p5KkywUD9L2oENz7
+Matches scanned address: no (different script type)
+
+======================================================================
+Educational / security-audit use only. Only scan addresses you own
+or are authorized to analyze.
+A dangerously small nonce was used when signing.
+======================================================================

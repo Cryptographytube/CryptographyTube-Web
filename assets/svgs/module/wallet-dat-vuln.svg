@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- .dat file: dark outline -->
+  <path fill="#194F82" d="M120 32h180c6 0 12 3 16 7l104 104c4 4 7 10 7 16v300c0 24-20 44-44 44H120c-24 0-44-20-44-44V76c0-24 20-44 44-44z"/>
+  <!-- .dat file: blue body -->
+  <path fill="#56ACE0" d="M128 60h164v88c0 15 12 28 28 28h84v272c0 9-7 16-16 16H144c-9 0-16-7-16-16V76c0-9 7-16 16-16z"/>
+  <!-- folded corner -->
+  <path fill="#EAF4FB" d="M300 36l108 108h-84c-13 0-24-11-24-24V36z"/>
+  <!-- data lines -->
+  <path fill="#FFFFFF" fill-opacity="0.92" d="M164 150h96v22h-96zM164 192h150v22H164z"/>
+  <!-- yellow key (private-key dump), lower-left -->
+  <path fill="#FFC10D" fill-rule="evenodd" d="M176 300c39 0 71 32 71 71 0 6-1 12-2 18l58 58-30 30-24-24-22 22-24-24-22 22-30-30 66-66c-6-2-12-4-17-8-30-20-38-60-18-90 13-19 34-31 58-31zm-8 46a20 20 0 100 40 20 20 0 000-40z"/>
+  <!-- red vulnerability alert badge, bottom-right -->
+  <path fill="#e74c3c" d="M372 300c40 0 72 32 72 72s-32 72-72 72-72-32-72-72 32-72 72-72z"/>
+  <path fill="#FFFFFF" d="M362 330h20l-4 56h-12zM362 398h20v20h-20z"/>
+</svg>

@@ -1,0 +1,106 @@
+======================================================================
+VULNSCAN — Bitcoin ECDSA Vulnerability Report
+======================================================================
+Address        : 1EDLS29FrUDBDUoX96vD3iihXWje6nmj8d
+Balance        : 0 BTC
+Total received : 94.49473386 BTC
+TX count       : 145
+Generated (UTC): 2026-09-07 05:37:00
+
+VULNERABILITY  : weak_nonce
+TITLE          : Weak/low nonce in 144 input(s) (k is only 1 bits)
+
+Transactions involved:
+  - 60b7af49758fe30d73ca5ffeacb7b769faffff7aed404493fc8433dd96e481fb
+  - 0e81c12a352140f4b102fb6256aec3cb6af6d7b38a141752365d3ee4e8f599fa
+  - 7ae202a2b6d438e66e66e45699f3a60f1f44800bef5112e320d750d0d53609f1
+  - 5b71275fe8531cd7b9e7c341f2d87b8b0a733ac9be9c4554b92d9f8eb42f34ed
+  - c1fdc54af93377e29f50972625f4aea5f73f1b629eeb0e29c0b4175f98aa45ec
+  - 6adc99130a5d6e636339ac59774db735a6473c77b1aaff8edf8f8083db2316ec
+  - dc679fdcc0ad20c77d872ed06094216b1d6942e8325cba3ac2ebbb608eef3ee5
+  - 02841e84d1babfa60c3cd360dfffec82014f4557190c5760cf97dc41dd1a33e2
+  - d44b1c143fe63476e98030729498a609c5fdd9f3ede0d91a57751748b14950de
+  - bc2283ba5c5495e6b107a726346912d495619021491dc11127884315940876d6
+  - e698e02b7794e1da33f134e13f874a0df3b6fbfd2fa101f59e28076ac122d3d4
+  - 8845cd82544b1c0ad028c6bbfb5e40254be0b91a411fbd49b275915cd16fb8c6
+  - 8cfce21646edb84e59f83e2f35d7907bbe041dfeedb605d93091f2750ddd8bc5
+  - 1363acbf2c3e02b04e0004906fd7f5a77e4d7c78149df1cf93c6766442f627c3
+  - e3748d1f3a4431960d8666aa6f901d3b6d68ca684b68498842e2c9aa3d9090b4
+  - 391694203f69da7c17e08436cc878127072852060d16f8f8d4af84e0a52c84b3
+  - 9fb5e1f68e0c59a2fa24ab9cc400dcabe9f740bf0ce974b64bbe143c9edbb4af
+  - 872658296effe2d2c413cafcfa13783c2a5b5b6fc3bfb370cd125a9dda88d6aa
+  - 941f16361e79e96f8e1ffc4a8d547b30c0ab0a56f028894ee4f441a42dc1fea7
+  - e061ab0e27a7071d382e2f5f8e697003bb43d3c7a022f983ab21eb05df3db0a5
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+  - 17dfb87e84262a67129e7c646e31f64129e39498b0551604a0e767a8a19b75a3
+
+Signature indices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143]
+
+----------------------------------------------------------------------
+VALUES
+----------------------------------------------------------------------
+             count : 144
+          min_bits : 1
+          max_bits : 1
+     input_indices : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143]
+
+----------------------------------------------------------------------
+CALCULATION (step by step)
+----------------------------------------------------------------------
+ 1. With the recovered key, k = (z + r·x)/s per signature.
+ 2. 144 signature(s) used a nonce of only 1 bits —
+ 3. far below the ~256-bit safe range.
+ 4. Sample nonces:
+ 5.     #0: k=0x1 (1 bits)
+ 6.     #1: k=0x1 (1 bits)
+ 7.     #2: k=0x1 (1 bits)
+ 8.     #3: k=0x1 (1 bits)
+ 9.     #4: k=0x1 (1 bits)
+10.     #5: k=0x1 (1 bits)
+
+======================================================================
+RECOVERED PRIVATE KEY
+======================================================================
+Private key (hex)      : c7d7f8d7bf45cb9608225b9c97d2a960d7186394d4ebd754d4f5ef8b0a7982a6
+WIF (compressed)       : L3vBSUnuxonNW3TLUXXctQfewmqZi74pj7eMhDXHHmKzNTVyJH9T
+WIF (uncompressed)     : 5KLJKTgrcJPy5KEDZyJp6ksu6cXwY4e7jcwgaaeg2zAjuYm448o
+Public key (compressed): 03755456af0fe6f4d81f88988a4b6ec71e0c8df780804872517b0ff5063895ef18
+P2PKH (compressed)     : 1EDLS29FrUDBDUoX96vD3iihXWje6nmj8d
+P2PKH (uncompressed)   : 1DYTnaCoLumzhCDB1h8NPHbruHwPzbx9qK
+P2WPKH (bech32)        : bc1qjrhd3caeffk80thdzrvyaa6rht38s349mzu2lh
+P2SH-P2WPKH (3...)     : 33B3UJPvsVJGFMk46V8LVtsdMhVDsTAFwM
+Matches scanned address: YES
+
+======================================================================
+Educational / security-audit use only. Only scan addresses you own
+or are authorized to analyze.
+A dangerously small nonce was used when signing.
+======================================================================

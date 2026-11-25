@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g transform="translate(0 8)">
+<!-- signature panel -->
+<rect x="64" y="72" width="384" height="120" rx="18" fill="#FFE0DE" stroke="#C0392B" stroke-width="8"/>
+<text x="92" y="150" font-family="monospace" font-weight="800" font-size="46" fill="#C0392B">SIG</text>
+<!-- r = 0 (red, forged) -->
+<g transform="translate(300 132)">
+  <rect x="-58" y="-34" width="72" height="68" rx="10" fill="#E74C3C"/>
+  <text x="-22" y="14" font-family="monospace" font-weight="800" font-size="40" fill="#FFFFFF" text-anchor="middle">r=0</text>
+  <rect x="22" y="-34" width="60" height="68" rx="10" fill="#556080"/>
+  <text x="52" y="14" font-family="monospace" font-weight="800" font-size="40" fill="#FFFFFF" text-anchor="middle">s</text>
+</g>
+<!-- broken shield (verifier bypassed) -->
+<path d="M256 232 l104 30 v70 c0 66 -46 104 -104 128 c-58 -24 -104 -62 -104 -128 v-70 z" fill="#FDEBD0" stroke="#D09838" stroke-width="9"/>
+<!-- crack through the shield -->
+<path d="M240 268 l34 46 -26 26 40 66" fill="none" stroke="#C0392B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- check mark that shouldn't be there -->
+<path d="M300 344 l24 24 44 -52" fill="none" stroke="#16A085" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+</g></svg>

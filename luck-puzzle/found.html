@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../assets/js/localhost-fix.js"></script>
+    <!-- Theme init FIRST (prevent flash) -->
+    <script>
+        (function() {
+            var theme = localStorage.getItem('cgt-theme') || 'light';
+            document.documentElement.setAttribute('data-bs-theme', theme);
+            window.CGT_DEFAULT_THEME = 'light';
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Found Luck - Live Luck Puzzle Findings | CryptographyTube</title>
+    <meta name="title" content="Found Luck - Live Luck Puzzle Findings | CryptographyTube">
+    <meta name="description" content="Every address the Luck Puzzle scan has found with on-chain activity (balance, received or tx), together with its private key. Saved permanently and downloadable as a text file.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="author" content="CryptographyTube">
+    <meta name="theme-color" content="#f7931a">
+    <meta name="msapplication-TileColor" content="#f7931a">
+
+    <link rel="canonical" href="https://cryptographytube.org/luck-puzzle/found">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/png/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/png/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/png/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/site.webmanifest">
+
+    <!-- Critical CSS (same tokens as the rest of the site) -->
+    <style>
+:root,[data-bs-theme="light"]{--cgt-bg:#f5f5f5;--cgt-bg-secondary:#fff;--cgt-text:#212529;--cgt-border:#dee2e6;--cgt-primary:#0d6efd;--cgt-navbar-bg:rgba(255,255,255,.98);--navbar-height:56px}
+[data-bs-theme="dark"]{--cgt-bg:#121212;--cgt-bg-secondary:#1e1e1e;--cgt-text:#e9ecef;--cgt-border:#333;--cgt-primary:#60a5fa;--cgt-navbar-bg:rgba(30,30,30,.98)}
+*,::after,::before{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--cgt-bg);color:var(--cgt-text);display:flex;flex-direction:column;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+.main-content{flex:1;padding-top:calc(var(--navbar-height) + 1rem);padding-bottom:1rem}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1030;background:var(--cgt-navbar-bg);backdrop-filter:blur(10px);border-bottom:1px solid var(--cgt-border);height:var(--navbar-height);display:flex;align-items:center}
+.navbar .container{display:flex;align-items:center;width:100%;max-width:1320px;margin:0 auto;padding:0 1rem}
+.navbar-brand{display:flex;align-items:center;text-decoration:none;color:var(--cgt-text)}
+.cgt-logo{display:flex;align-items:center;gap:.5rem}
+.cgt-logo-text{font-weight:700;font-size:1.1rem}
+.container{width:100%;max-width:1320px;margin:0 auto;padding:0 1rem}
+.breadcrumb{display:flex;flex-wrap:wrap;list-style:none;padding:0;margin:0}
+.breadcrumb-item+.breadcrumb-item::before{content:"/";padding:0 .5rem;color:#6c757d}
+.breadcrumb-item a{color:var(--cgt-primary);text-decoration:none}
+.text-muted{color:#6c757d}
+[data-bs-theme="dark"] .text-muted{color:#9ca3af}
+.fa-icon{display:inline-block;vertical-align:-.125em}
+
+/* ---- Found Luck dashboard ---- */
+.fl-wrap{background:var(--cgt-bg-secondary);border:1px solid var(--cgt-border);border-radius:12px;padding:1.25rem}
+.fl-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.35rem}
+.fl-title{margin:0;font-size:1.25rem;font-weight:700;display:flex;align-items:center;gap:.5rem}
+.fl-count-pill{display:inline-block;padding:2px 10px;border-radius:999px;background:#f7931a;color:#fff;font-size:.8rem;font-weight:700}
+.fl-sub{font-size:.85rem;line-height:1.5;color:#6c757d;margin:0 0 1rem}
+[data-bs-theme="dark"] .fl-sub{color:#9ca3af}
+.fl-actions{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.fl-btn{display:inline-flex;align-items:center;gap:6px;padding:.5rem .9rem;border-radius:8px;border:1px solid var(--cgt-border);background:transparent;color:var(--cgt-text);font-size:.85rem;font-weight:600;text-decoration:none;cursor:pointer;line-height:1.2}
+.fl-btn:hover{opacity:.85}
+.fl-btn-primary{background:#f7931a;border-color:#f7931a;color:#fff}
+.fl-note{font-size:.78rem;color:#6c757d;margin-top:.75rem;line-height:1.5}
+[data-bs-theme="dark"] .fl-note{color:#9ca3af}
+
+.fl-table-wrap{margin-top:1rem;overflow-x:auto;border:1px solid var(--cgt-border);border-radius:10px}
+table.fl-table{width:100%;border-collapse:collapse;font-size:.82rem}
+table.fl-table th,table.fl-table td{padding:.6rem .7rem;text-align:left;border-bottom:1px solid var(--cgt-border);vertical-align:top}
+table.fl-table th{background:rgba(127,127,127,.08);font-weight:700;white-space:nowrap;font-size:.75rem;text-transform:uppercase;letter-spacing:.03em}
+table.fl-table tr:last-child td{border-bottom:0}
+table.fl-table td.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.78rem;word-break:break-all}
+.fl-pk{color:#f7931a;font-weight:600;text-decoration:none}
+.fl-empty{padding:2rem 1rem;text-align:center;color:#6c757d;font-size:.9rem}
+.fl-more{display:flex;justify-content:center;margin-top:1rem}
+.fl-more button{padding:.55rem 1.4rem;border-radius:8px;border:1px solid var(--cgt-border);background:var(--cgt-bg-secondary);color:var(--cgt-text);font-weight:600;font-size:.85rem;cursor:pointer}
+.fl-more button[disabled]{opacity:.5;cursor:default}
+.fl-err{padding:1rem;border-radius:8px;background:rgba(220,53,69,.12);color:#dc3545;font-size:.85rem;margin-top:1rem}
+</style>
+
+    <!-- Bootstrap CSS (sync load to prevent CLS) -->
+    <link href="../assets/css/bootstrap-purged.min.css" rel="stylesheet">
+    <link href="../assets/css/style.min.css?v=e86e4e59" rel="stylesheet">
+<script src="/assets/js/clean-urls.js?v=cgturl1"></script>
+<script src="/assets/js/site-config.js?v=cfg1"></script>
+<script src="/assets/js/integrity.js?v=cgti2" defer></script>
+</head>
+<body>
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar navbar-expand-xl fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="../index.html">
+                <span class="cgt-logo">
+                    <span class="cgt-logo-icon"><video width="30" height="30" autoplay loop muted playsinline preload="auto" style="display:block;border-radius:6px;object-fit:cover" aria-label="CGT logo"><source src="/animation.gif.mp4" type="video/mp4"></video></span>
+                    <span class="cgt-logo-text"><img src="/assets/png/cgt-logo.png?v=cgtlogo2" alt="CGT - CryptographyTube" height="34" style="display:block;height:34px;width:auto"></span>
+                </span>
+            </a>
+
+            <div class="navbar-actions order-xl-last">
+                <button class="navbar-action-btn" id="themeToggle" title="Toggle theme">
+                    <span id="themeIconLight"><img src="../assets/svgs/solid/sun.svg" class="fa-icon " width="15" height="15" alt=""></span>
+                    <span id="themeIconDark"><img src="../assets/svgs/solid/moon.svg" class="fa-icon " width="15" height="15" alt=""></span>
+                </button>
+                <a href="https://t.me/cryptographytubeofficial" class="navbar-action-btn navbar-action-tg" title="Telegram" target="_blank" rel="noopener">
+                    <img src="../assets/svgs/brands/telegram.svg" class="fa-icon " width="16" height="16" alt="">
+                </a>
+            </div>
+
+            <button class="navbar-toggler border-0 ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-label="Toggle navigation" aria-controls="navbarMain" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../luck-puzzle.html">
+                            <img src="../assets/svgs/solid/key.svg" class="fa-icon me-1" width="14" height="14" alt=""> Directory
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/luck-puzzle/found">
+                            <img src="../assets/svgs/solid/trophy.svg" class="fa-icon me-1" width="14" height="14" alt=""> Found Luck
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== MAIN ========== -->
+    <main class="main-content">
+        <div class="container mb-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="../index.html"><img src="../assets/svgs/solid/house.svg" class="fa-icon " width="14" height="14" alt="">Home</a></li>
+                    <li class="breadcrumb-item"><a href="../luck-puzzle.html"><img src="../assets/svgs/solid/key.svg" class="fa-icon " width="14" height="14" alt="">Luck Puzzle</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><span>Found Luck</span></li>
+                </ol>
+            </nav>
+        </div>
+
+        <div class="container">
+            <div class="fl-wrap">
+                <div class="fl-head">
+                    <h1 class="fl-title">🏆 Found Luck <span class="fl-count-pill" id="flTotal">…</span></h1>
+                    <div class="fl-actions">
+                        <a class="fl-btn fl-btn-primary" id="flDownload" href="/found.php?download=txt" download>⬇ Download TXT</a>
+                        <button class="fl-btn" id="flRefresh" type="button">↻ Refresh</button>
+                    </div>
+                </div>
+                <p class="fl-sub">
+                    Every address the Luck Puzzle scan has found with real on-chain activity
+                    (<b>balance &gt; 0</b> or <b>received &gt; 0</b> or <b>tx &gt; 0</b>), saved together with its
+                    private key. Each Luck Puzzle page scans automatically in your browser and reports a finding the
+                    moment it appears, so this list is shared by everyone on this domain and kept permanently.
+                </p>
+                <p class="fl-note">
+                    The full list is downloadable as a plain text file by anyone — the button above always exports
+                    every record. A finding is only ever recorded from a real positive reading of the chain; the
+                    board stays empty until one genuinely occurs.
+                </p>
+
+                <div id="flBody">
+                    <div class="fl-empty">Loading…</div>
+                </div>
+
+                <div class="fl-more" id="flMore" style="display:none;">
+                    <button type="button" id="flMoreBtn">Load more</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer py-3 mt-auto">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                    <small class="d-flex align-items-center justify-content-center justify-content-md-start gap-3 flex-wrap">
+                        <a href="../faq.html" class="text-muted text-decoration-none footer-link">
+                            <img src="../assets/svgs/solid/circle-question.svg" class="fa-icon me-1" width="12" height="12" alt="">FAQ
+                        </a>
+                        <a href="../disclaimer.html" class="text-muted text-decoration-none footer-link">
+                            <img src="../assets/svgs/solid/scale-balanced.svg" class="fa-icon me-1" width="12" height="12" alt="">Disclaimer
+                        </a>
+                        <a href="https://t.me/cryptographytubeofficial" class="text-muted text-decoration-none footer-link" target="_blank" rel="noopener">
+                            <img src="../assets/svgs/brands/telegram.svg" class="fa-icon me-1" width="12" height="12" alt="">Telegram
+                        </a>
+                    </small>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <small class="text-muted">&copy; 2026 CryptographyTube</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- UI (Modal & Collapse) + theme toggle -->
+    <script src="../assets/js/ui.obf.js" defer></script>
+    <script src="../assets/js/theme.obf.js" defer></script>
+
+    <script>
+    (function () {
+        'use strict';
+
+        var ENDPOINT = '/found.php';
+        var PAGE     = 100;        // rows fetched per request
+        var MAX_PAGE = 1000;       // found.php's hard cap
+        var REFRESH  = 20000;      // auto-refresh count interval
+
+        var offset = 0;
+        var total  = 0;
+        var loading = false;
+        var seen   = Object.create(null);
+
+        function $(id) { return document.getElementById(id); }
+        function esc(s) {
+            return String(s == null ? '' : s)
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+        function num(n) {
+            try { return Number(n).toLocaleString(); } catch (e) { return String(n); }
+        }
+        function when(ts) {
+            if (!ts) return '-';
+            try { return new Date(Number(ts) * 1000).toLocaleString(); } catch (e) { return '-'; }
+        }
+
+        function setTotal(n) {
+            if (typeof n !== 'number') return;
+            total = n;
+            $('flTotal').textContent = num(n);
+        }
+
+        function rowHtml(r) {
+            var chain = esc(r.chain || ''), addr = esc(r.address || '');
+            var pk = esc(r.pk_hex || '');
+            var pkLink = pk
+                ? '<a class="fl-pk" href="/key/' + pk + '" rel="nofollow">' + pk + '</a>'
+                : '-';
+            return '<tr>' +
+                '<td>' + esc(when(r.ts)) + '</td>' +
+                '<td>' + chain + '</td>' +
+                '<td class="mono">' + addr + '</td>' +
+                '<td class="mono">' + pkLink + '</td>' +
+                '<td class="mono">' + (esc(r.wif || '') || '-') + '</td>' +
+                '<td>' + (esc(r.bal || '') || '0') + '</td>' +
+                '<td>' + (esc(r.recv || '') || '0') + '</td>' +
+                '<td>' + (esc(r.tx || '') || '0') + '</td>' +
+            '</tr>';
+        }
+
+        function ensureTable() {
+            var body = $('flBody');
+            if (body.querySelector('table.fl-table')) return body.querySelector('tbody');
+            body.innerHTML =
+                '<div class="fl-table-wrap"><table class="fl-table">' +
+                '<thead><tr>' +
+                '<th>Time</th><th>Chain</th><th>Address</th><th>Private Key</th>' +
+                '<th>WIF</th><th>Balance</th><th>Received</th><th>Tx</th>' +
+                '</tr></thead><tbody></tbody></table></div>';
+            return body.querySelector('tbody');
+        }
+
+        function load(reset) {
+            if (loading) return;
+            loading = true;
+            if (reset) {
+                offset = 0;
+                seen = Object.create(null);
+                $('flBody').innerHTML = '<div class="fl-empty">Loading…</div>';
+                $('flMore').style.display = 'none';
+            }
+            var moreBtn = $('flMoreBtn');
+            moreBtn.disabled = true;
+            moreBtn.textContent = 'Loading…';
+
+            fetch(ENDPOINT + '?offset=' + offset + '&limit=' + PAGE, { cache: 'no-store' })
+              .then(function (r) { return r.json(); })
+              .then(function (res) {
+                  loading = false;
+                  if (!res || !res.ok) throw new Error('bad response');
+                  setTotal(res.total);
+
+                  var tbody = ensureTable();
+                  var items = res.items || [];
+                  var added = 0;
+                  for (var i = 0; i < items.length; i++) {
+                      var r = items[i];
+                      var key = (r.chain || '') + '|' + (r.address || '');
+                      if (seen[key]) continue;      // guard against overlapping refreshes
+                      seen[key] = 1;
+                      tbody.insertAdjacentHTML('beforeend', rowHtml(r));
+                      added++;
+                  }
+                  offset += items.length;
+
+                  if (total === 0) {
+                      $('flBody').innerHTML =
+                          '<div class="fl-empty">No findings yet. Every Luck Puzzle page is scanning right now — ' +
+                          'the moment an address shows balance, received or tx activity it will appear here.</div>';
+                      $('flMore').style.display = 'none';
+                  } else {
+                      $('flMore').style.display = (offset < total && added > 0) ? 'flex' : 'none';
+                  }
+                  moreBtn.disabled = false;
+                  moreBtn.textContent = 'Load more';
+              })
+              .catch(function () {
+                  loading = false;
+                  moreBtn.disabled = false;
+                  moreBtn.textContent = 'Load more';
+                  if (reset) {
+                      $('flBody').innerHTML =
+                          '<div class="fl-err">Could not load the found list. The store (found.php) may not be ' +
+                          'reachable on this host.</div>';
+                  }
+              });
+        }
+
+        function pollTotal() {
+            fetch(ENDPOINT + '?count=1', { cache: 'no-store' })
+              .then(function (r) { return r.json(); })
+              .then(function (res) { if (res && res.ok) setTotal(res.total); })
+              .catch(function () {});
+        }
+
+        $('flMoreBtn').addEventListener('click', function () { load(false); });
+        $('flRefresh').addEventListener('click', function () { load(true); });
+
+        load(true);
+        setInterval(function () {
+            if (document.hidden) return;
+            pollTotal();
+        }, REFRESH);
+    })();
+    </script>
+</body>
+</html>

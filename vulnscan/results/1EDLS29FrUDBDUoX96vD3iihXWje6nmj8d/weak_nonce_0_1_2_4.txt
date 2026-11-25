@@ -1,0 +1,56 @@
+======================================================================
+VULNSCAN — Bitcoin ECDSA Vulnerability Report
+======================================================================
+Address        : 1EDLS29FrUDBDUoX96vD3iihXWje6nmj8d
+Balance        : 0 BTC
+Total received : 94.49473386 BTC
+TX count       : 145
+Generated (UTC): 2026-09-07 05:37:00
+
+VULNERABILITY  : weak_nonce
+TITLE          : Weak/low nonce in 3 input(s) (k is only 1 bits)
+
+Transactions involved:
+  - 1dd4fa445d40a752b8282d75781b66802266948606c76128b59f8377b018e46c
+  - 1dd4fa445d40a752b8282d75781b66802266948606c76128b59f8377b018e46c
+  - 1dd4fa445d40a752b8282d75781b66802266948606c76128b59f8377b018e46c
+
+Signature indices: [0, 1, 2]
+
+----------------------------------------------------------------------
+VALUES
+----------------------------------------------------------------------
+             count : 3
+          min_bits : 1
+          max_bits : 1
+     input_indices : [0, 1, 2]
+
+----------------------------------------------------------------------
+CALCULATION (step by step)
+----------------------------------------------------------------------
+ 1. With the recovered key, k = (z + r·x)/s per signature.
+ 2. 3 signature(s) used a nonce of only 1 bits —
+ 3. far below the ~256-bit safe range.
+ 4. Sample nonces:
+ 5.     #0: k=0x1 (1 bits)
+ 6.     #1: k=0x1 (1 bits)
+ 7.     #2: k=0x1 (1 bits)
+
+======================================================================
+RECOVERED PRIVATE KEY
+======================================================================
+Private key (hex)      : 251d0c37a5f2f91246f09023c9077d3a2a67202da6547c9c054ec1f3a38e7e4f
+WIF (compressed)       : KxTrXAqicQUBHEfQ69CoqFM7jeC9dWJiynPeto41xWsCZjxNqbJV
+WIF (uncompressed)     : 5J6dbUc45rGg2sDn79f26VdH2WGffBGLw6keawPS93gvNWXhPm5
+Public key (compressed): 02b530aace1774ac4a19de6619d9ba25e78e7fd09f7d0e8582e21e65f98aebf126
+P2PKH (compressed)     : 1AJh4ADaYTNvMJidWz5aUetqnmdeiNSySE
+P2PKH (uncompressed)   : 14iTG9Ci6beLvwXjXRmHonxtfHuCvKZqqp
+P2WPKH (bech32)        : bc1qvcg68gwyhuaut5nzhngr8fw3d0kdt7agl9awj7
+P2SH-P2WPKH (3...)     : 31oh6shUCmT3pepi1GRxV3a6uNSTxDTwzh
+Matches scanned address: no (different script type)
+
+======================================================================
+Educational / security-audit use only. Only scan addresses you own
+or are authorized to analyze.
+A dangerously small nonce was used when signing.
+======================================================================

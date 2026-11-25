@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" fill="none">
+  <!-- ===== Database cylinder = the stored RMD160 / HASH160 address space ===== -->
+  <!-- body -->
+  <path d="M55 175 V340 A110 40 0 0 0 275 340 V175 Z" fill="#10b981"/>
+  <!-- darker front shading bands -->
+  <path d="M55 245 A110 40 0 0 0 275 245" fill="none" stroke="#0a7f5c" stroke-width="9" stroke-linecap="round"/>
+  <path d="M55 300 A110 40 0 0 0 275 300" fill="none" stroke="#0a7f5c" stroke-width="9" stroke-linecap="round"/>
+  <!-- top lid -->
+  <ellipse cx="165" cy="175" rx="110" ry="40" fill="#34d399"/>
+  <!-- hashed-row ticks on the lid -->
+  <g fill="#065f46" opacity="0.65">
+    <rect x="108" y="169" width="70" height="11" rx="5.5"/>
+    <rect x="190" y="169" width="34" height="11" rx="5.5"/>
+  </g>
+
+  <!-- ===== Hash seal (hexagon + #) = the RIPEMD-160 hashing ===== -->
+  <path d="M385 161 L302.7 208.5 L302.7 303.5 L385 351 L467.3 303.5 L467.3 208.5 Z"
+        fill="#f7931a" stroke="#ffffff" stroke-width="12" stroke-linejoin="round"/>
+  <g stroke="#ffffff" stroke-width="13" stroke-linecap="round">
+    <line x1="372" y1="214" x2="362" y2="298"/>
+    <line x1="408" y1="214" x2="398" y2="298"/>
+    <line x1="345" y1="242" x2="425" y2="242"/>
+    <line x1="345" y1="270" x2="425" y2="270"/>
+  </g>
+</svg>

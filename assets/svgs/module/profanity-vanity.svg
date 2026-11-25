@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g transform="translate(0.66 0.66) scale(0.9974)"><g transform="translate(-110.16 -242.81) scale(1.5515)">
+<path d="M92 176 h252 l36 40 -36 40 H92 z" fill="#32A5B9" stroke="#556080" stroke-width="6"/>
+<text x="122" y="238" font-family="monospace" font-weight="700" font-size="64" fill="#FFFFFF">0xBE</text>
+<text x="320" y="238" font-family="monospace" font-weight="700" font-size="64" fill="#F0C419">&#8230;</text>
+<path d="M268 296 l-28 24 28 24 28 -24 z" fill="#556080"/>
+<g transform="translate(256 336)">
+  <path d="M-40 0 l18 32 h44 l18 -32 -24 -24 h-32 z" fill="#D0E8FF" stroke="#556080" stroke-width="5"/>
+  <rect x="-20" y="8" width="40" height="30" rx="6" fill="#FF5D5D"/>
+  <rect x="-5" y="18" width="10" height="10" rx="2" fill="#FFFFFF"/>
+</g>
+<g transform="translate(256 430)">
+  <rect x="-20" y="-13" width="40" height="30" rx="9" fill="#F0C419"/>
+  <rect x="-7" y="-5" width="14" height="14" rx="4" fill="#363E51"/>
+  <rect x="-5" y="17" width="10" height="24" rx="3" fill="#F0C419"/>
+  <rect x="5" y="32" width="20" height="8" rx="3" fill="#D09838"/>
+</g>
+</g></g></svg>

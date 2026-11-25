@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g transform="translate(-78.47 -113.16) scale(1.3091)">
+<g transform="translate(170 150)">
+  <rect x="-48" y="-40" width="96" height="80" rx="16" fill="#E8F5E9" stroke="#2E7D32" stroke-width="8"/>
+  <text x="0" y="12" font-family="monospace" font-weight="800" font-size="46" fill="#2E7D32" text-anchor="middle">k&#8321;</text>
+</g>
+<path d="M240 176 l26 24 -26 24 -26 -24 z" fill="#D09838"/>
+<g transform="translate(342 150)">
+  <rect x="-48" y="-40" width="96" height="80" rx="16" fill="#E8F5E9" stroke="#2E7D32" stroke-width="8"/>
+  <text x="0" y="12" font-family="monospace" font-weight="800" font-size="46" fill="#2E7D32" text-anchor="middle">k&#8322;</text>
+</g>
+<rect x="96" y="280" width="320" height="58" rx="14" fill="#D0E8FF" stroke="#1C71DA" stroke-width="6"/>
+<text x="256" y="322" font-family="Arial, sans-serif" font-weight="800" font-size="34" fill="#1C71DA" text-anchor="middle">k&#8322; = a&#183;k&#8321; + b</text>
+<path d="M256 366 l-22 20 22 22 22 -22 z" fill="#D09838"/>
+<g transform="translate(256 420)">
+  <rect x="-20" y="-13" width="40" height="30" rx="9" fill="#F0C419"/>
+  <rect x="-7" y="-5" width="14" height="14" rx="4" fill="#363E51"/>
+  <rect x="-5" y="17" width="10" height="22" rx="3" fill="#F0C419"/>
+  <rect x="5" y="31" width="20" height="7" rx="3" fill="#D09838"/>
+</g>
+</g></svg>

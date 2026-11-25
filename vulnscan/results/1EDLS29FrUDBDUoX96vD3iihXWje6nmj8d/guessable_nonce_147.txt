@@ -1,0 +1,55 @@
+======================================================================
+VULNSCAN — Bitcoin ECDSA Vulnerability Report
+======================================================================
+Address        : 1EDLS29FrUDBDUoX96vD3iihXWje6nmj8d
+Balance        : 0 BTC
+Total received : 94.49473386 BTC
+TX count       : 145
+Generated (UTC): 2026-09-07 05:37:00
+
+VULNERABILITY  : guessable_nonce
+TITLE          : Guessable nonce in input #147 (small constant)
+
+Transactions involved:
+  - c90cd5edeb3e4261056f61e91a332c7a661a76b14eecf11227cff064a6488fbc
+
+Signature indices: [147]
+
+----------------------------------------------------------------------
+VALUES
+----------------------------------------------------------------------
+                 r : 79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798
+                 s : 99c6dcd2e6f55c23642c442e4a02430cfa124091b321a09bd598b43e7ff401d9
+                 z : a6a0d008775007ba70fa3cb2e6fc0c700edb75c9182ae3d8cd848fe02f22955b
+           nonce_k : 0000000000000000000000000000000000000000000000000000000000000001
+        nonce_rule : small constant
+            pubkey : 034558c8e0359ec52961a4c39bf8a34648191462106815def80ce7ce129512d27a
+
+----------------------------------------------------------------------
+CALCULATION (step by step)
+----------------------------------------------------------------------
+ 1. Signature input #147 used a guessable / structured nonce.
+ 2. Matched rule: small constant
+ 3. Confirmed x(k·G) mod n == r.
+ 4. x = (s·k - z) / r     (mod n)
+ 5.     k = 0x1…
+ 6.     x = 0x6ca26cbc566f37de8c86572216d69ab13025af830e9cfd4e…
+
+======================================================================
+RECOVERED PRIVATE KEY
+======================================================================
+Private key (hex)      : 6ca26cbc566f37de8c86572216d69ab13025af830e9cfd4ee13e29be682d8492
+WIF (compressed)       : Kzrt7dewKLFrYRkegfEGSD6jrFVBa6PzmDAcUQjKX43mgeGJMExe
+WIF (uncompressed)     : 5Je8W9Jf8n9MHdsfu2s8aMQxUUJG5nBCGuboZ3CrWTyN12YprLR
+Public key (compressed): 034558c8e0359ec52961a4c39bf8a34648191462106815def80ce7ce129512d27a
+P2PKH (compressed)     : 18oaVanLC1YNXj8p1bdTAh2RnySB7cvsND
+P2PKH (uncompressed)   : 1N4udyx1DhYDmJ3NMKhqjqKvekH55H2kiU
+P2WPKH (bech32)        : bc1q2ktlj8w2yycvk7v93na3zqem02pgl4y3897yd7
+P2SH-P2WPKH (3...)     : 36vD8Q8iUvD6vFrXpbxRKvT6bWpbT4dmSU
+Matches scanned address: no (different script type)
+
+======================================================================
+Educational / security-audit use only. Only scan addresses you own
+or are authorized to analyze.
+A guessable / structured nonce leaked the private key.
+======================================================================

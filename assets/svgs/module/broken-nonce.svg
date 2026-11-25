@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g transform="translate(-132.56 -167.54) scale(1.5208)">
+<g transform="translate(160 180)">
+  <rect x="-52" y="-44" width="104" height="88" rx="16" fill="#D0E8FF" stroke="#E56565" stroke-width="8"/>
+  <text x="0" y="16" font-family="monospace" font-weight="800" font-size="48" fill="#E56565" text-anchor="middle">R</text>
+</g>
+<g transform="translate(352 180)">
+  <rect x="-52" y="-44" width="104" height="88" rx="16" fill="#D0E8FF" stroke="#E56565" stroke-width="8"/>
+  <text x="0" y="16" font-family="monospace" font-weight="800" font-size="48" fill="#E56565" text-anchor="middle">R</text>
+</g>
+<rect x="196" y="182" width="120" height="20" rx="10" fill="#FF5D5D"/>
+<g fill="#FFFFFF">
+  <rect x="206" y="186" width="8" height="12" rx="2"/>
+  <rect x="222" y="186" width="8" height="12" rx="2"/>
+  <rect x="238" y="186" width="8" height="12" rx="2"/>
+  <rect x="254" y="186" width="8" height="12" rx="2"/>
+  <rect x="270" y="186" width="8" height="12" rx="2"/>
+  <rect x="286" y="186" width="8" height="12" rx="2"/>
+  <rect x="302" y="186" width="8" height="12" rx="2"/>
+</g>
+<path d="M256 306 l-26 24 26 26 26 -26 z" fill="#D09838"/>
+<g transform="translate(256 368)">
+  <rect x="-30" y="-26" width="60" height="56" rx="13" fill="#F0C419"/>
+  <rect x="-11" y="-10" width="22" height="22" rx="5" fill="#363E51"/>
+  <rect x="-9" y="22" width="18" height="36" rx="4" fill="#F0C419"/>
+  <rect x="9" y="42" width="24" height="9" rx="3" fill="#D09838"/>
+</g>
+</g></svg>

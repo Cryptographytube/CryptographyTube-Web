@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<!-- Luck Puzzle: a four-leaf clover (luck) whose stem is a golden key (the private-key range) -->
+<g transform="translate(256 188)">
+  <!-- golden key stem, drawn under the clover -->
+  <rect x="-11" y="-6" width="22" height="168" rx="11" fill="#F0C419"/>
+  <rect x="11" y="108" width="30" height="17" rx="6" fill="#D09838"/>
+  <rect x="11" y="134" width="20" height="15" rx="6" fill="#D09838"/>
+  <!-- four heart-shaped leaflets, points meeting at centre -->
+  <g fill="#35C759" stroke="#248A3D" stroke-width="8" stroke-linejoin="round">
+    <path transform="rotate(45)"  d="M0,-95 C-18,-125 -68,-120 -68,-80 C-68,-45 -30,-18 0,0 C30,-18 68,-45 68,-80 C68,-120 18,-125 0,-95 Z"/>
+    <path transform="rotate(135)" d="M0,-95 C-18,-125 -68,-120 -68,-80 C-68,-45 -30,-18 0,0 C30,-18 68,-45 68,-80 C68,-120 18,-125 0,-95 Z"/>
+    <path transform="rotate(225)" d="M0,-95 C-18,-125 -68,-120 -68,-80 C-68,-45 -30,-18 0,0 C30,-18 68,-45 68,-80 C68,-120 18,-125 0,-95 Z"/>
+    <path transform="rotate(315)" d="M0,-95 C-18,-125 -68,-120 -68,-80 C-68,-45 -30,-18 0,0 C30,-18 68,-45 68,-80 C68,-120 18,-125 0,-95 Z"/>
+  </g>
+  <!-- key bow: the clover heart doubles as the key head -->
+  <circle r="16" fill="#F0C419" stroke="#D09838" stroke-width="4"/>
+  <circle r="6.5" fill="#2B3245"/>
+</g>
+</svg>
