@@ -20,3 +20,7 @@ Static website files for cryptographytube.org
 1. Go to https://app.netlify.com/drop
 2. Drag this folder to the drop zone
 3. Done! Site is live.
+
+## Future Development
+
+Monero API, RPC, and Node integration are not currently available. These features are planned for future development and may be added in upcoming updates.
