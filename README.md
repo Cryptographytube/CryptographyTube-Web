@@ -24,3 +24,13 @@ Static website files for cryptographytube.org
 ## Future Development
 
 Monero API, RPC, and Node integration are not currently available. These features are planned for future development and may be added in upcoming updates.
+
+## Official Websites
+
+This source code is used for all three official CryptographyTube websites:
+
+- https://cryptographytube.org/
+- https://cryptographytube.com/
+- https://cryptographytube.in/
+
+All three websites use the same source code and are designed for deployment on cPanel hosting.
