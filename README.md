@@ -34,3 +34,5 @@ This source code is used for all three official CryptographyTube websites:
 - https://cryptographytube.in/
 
 All three websites use the same source code and are designed for deployment on cPanel hosting.
+
+This project is open-source to promote transparency, security, and community contributions. Everyone is welcome to review, audit, and improve the source code to help keep the websites safe, secure, and reliable.
